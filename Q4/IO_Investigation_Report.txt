@@ -1,0 +1,5 @@
+Explanation of Linux File I/O: Linux treats almost everything as a file and manages them using File Descriptors (FDs). By default, FD 0 is Standard Input, FD 1 is Standard Output, and FD 2 is Standard Error.
+Command Observations:
+ls -l /proc/$$/fd: Identified the open file descriptors currently being used by the active shell session.
+find /etc -name "*.conf" > Q4/found.txt 2> Q4/errors.txt: Demonstrated I/O redirection. Standard output (successful finds) was successfully routed via FD 1 to found.txt, while standard error was separated and routed via FD 2 to errors.txt.
+ulimit -a: Displayed the current resource limits for my shell environment, showing the maximum "open files" limit, which prevents a single application from crashing the system by exhausting file descriptors.
